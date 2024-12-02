@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 def about(request):
     template_name = "pages/about.html"
+    print(request)
     return render(request, template_name)
 
 

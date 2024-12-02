@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-posts = [
+post_catalog = [
     {
         "id": 0,
         "location": "Остров отчаянья",
@@ -46,16 +46,18 @@ posts = [
 
 def index(request):
     template_name = "blog/index.html"
-    context = {'post': posts}
+
+    context = {"post_catalog": post_catalog}
     return render(request, template_name, context)
 
 
 def post_detail(request, id):
     template_name = "blog/detail.html"
-    context = {"post": posts[id]}
+    context = {"post": post_catalog[id]}
     return render(request, template_name, context)
 
 
-def category_posts(request):
+def category_posts(request, category_slug):
     template_name = "blog/category.html"
-    return render(request, template_name)
+    context = {"category_slug": category_slug}
+    return render(request, template_name, context)
